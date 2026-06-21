@@ -69,6 +69,7 @@ export default function AdminDashboard() {
   const [newProjTags, setNewProjTags] = useState('');
   const [newProjUrl, setNewProjUrl] = useState('');
   const [newProjCoverImage, setNewProjCoverImage] = useState('');
+  const [newProjDescription, setNewProjDescription] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
 
   // Fallback Mocks
@@ -107,8 +108,8 @@ export default function AdminDashboard() {
   ];
 
   const mockProjects: Project[] = [
-    { _id: 'proj-1', title: 'Pulse Gym Redesign', category: 'Gyms & Fitness', client: 'Pulse Gym' },
-    { _id: 'proj-2', title: 'Bella Italia Digital Table-Booking', category: 'Cafes & Restaurants', client: 'Bella Italia Restaurant' }
+    { _id: 'proj-1', title: 'Pulse Gym Redesign', category: 'Gyms & Fitness', client: 'Pulse Gym', description: 'A premium transformation of a local boutique gym website, incorporating class schedules, coach portals, and integrated subscription payments.' },
+    { _id: 'proj-2', title: 'Bella Italia Digital Table-Booking', category: 'Cafes & Restaurants', client: 'Bella Italia Restaurant', description: 'Interactive and mobile-responsive website featuring online table booking, interactive menu views, and optimized speed loading.' }
   ];
 
   useEffect(() => {
@@ -248,6 +249,7 @@ export default function AdminDashboard() {
       client: newProjClient,
       category: newProjCategory,
       growth: newProjGrowth || '+0% Growth',
+      description: newProjDescription,
       tags: newProjTags.split(',').map(t => t.trim()).filter(Boolean),
       projectUrl: newProjUrl,
       coverImage: newProjCoverImage || 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=600',
@@ -267,6 +269,7 @@ export default function AdminDashboard() {
 
     setNewProjTitle('');
     setNewProjClient('');
+    setNewProjDescription('');
     setNewProjCategory('Gym & Fitness');
     setNewProjGrowth('');
     setNewProjTags('');
@@ -591,6 +594,18 @@ export default function AdminDashboard() {
                     </div>
 
                     <div className="flex flex-col gap-1.5">
+                      <label className="text-[10px] font-bold text-neutral-dark/50 uppercase tracking-wide">Project Description</label>
+                      <textarea
+                        rows={3}
+                        required
+                        placeholder="e.g. Replacing a slow legacy system with a Next.js schedules builder led to an immediate boom..."
+                        value={newProjDescription}
+                        onChange={(e) => setNewProjDescription(e.target.value)}
+                        className="w-full px-4 py-2.5 rounded-xl border border-neutral-border text-sm text-neutral-dark focus:outline-none focus:border-primary transition-colors resize-none"
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
                       <label className="text-[10px] font-bold text-neutral-dark/50 uppercase tracking-wide">Category</label>
                       <select
                         value={newProjCategory}
@@ -686,11 +701,16 @@ export default function AdminDashboard() {
                               <img src={p.coverImage} alt={p.title} className="w-full h-full object-cover" />
                             </div>
                           )}
-                          <div>
+                          <div className="flex-grow">
                             <h4 className="font-bold text-sm text-neutral-dark">{p.title}</h4>
                             <span className="text-[10px] font-semibold text-neutral-dark/40 block mt-1">
                               Category: {p.category} • Client: {p.client}
                             </span>
+                            {p.description && (
+                              <p className="text-xs text-neutral-dark/60 mt-2 line-clamp-2 leading-relaxed bg-neutral-soft/50 p-2.5 rounded-xl border border-neutral-border/40">
+                                {p.description}
+                              </p>
+                            )}
                           </div>
                         </div>
                         <div className="flex items-center gap-3">

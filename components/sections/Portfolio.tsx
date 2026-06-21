@@ -302,18 +302,40 @@ export default function Portfolio() {
                   </span>
 
                   {/* Arrow icon on hover */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    animate={
-                      hovered === project.id
-                        ? { opacity: 1, scale: 1 }
-                        : { opacity: 0, scale: 0.7 }
-                    }
-                    transition={{ duration: 0.25 }}
-                    className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-lg"
-                  >
-                    <ArrowUpRight className="w-4 h-4 text-neutral-dark" />
-                  </motion.div>
+                  {project.projectUrl ? (
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-4 right-4 z-20 cursor-pointer"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.7 }}
+                        animate={
+                          hovered === project.id
+                            ? { opacity: 1, scale: 1 }
+                            : { opacity: 0, scale: 0.7 }
+                        }
+                        transition={{ duration: 0.25 }}
+                        className="w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-transform duration-200"
+                      >
+                        <ArrowUpRight className="w-4 h-4 text-neutral-dark" />
+                      </motion.div>
+                    </a>
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.7 }}
+                      animate={
+                        hovered === project.id
+                          ? { opacity: 1, scale: 1 }
+                          : { opacity: 0, scale: 0.7 }
+                      }
+                      transition={{ duration: 0.25 }}
+                      className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-lg"
+                    >
+                      <ArrowUpRight className="w-4 h-4 text-neutral-dark" />
+                    </motion.div>
+                  )}
 
                   {/* Growth pill at bottom of image */}
                   <div className="absolute bottom-4 left-4 flex items-center gap-2 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
@@ -356,7 +378,7 @@ export default function Portfolio() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-xs font-bold text-primary hover:underline underline-offset-2 cursor-pointer"
                       >
-                        View Case Study
+                        Visit Website
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     ) : (
@@ -364,7 +386,7 @@ export default function Portfolio() {
                         whileHover={{ x: 3 }}
                         className="flex items-center gap-1.5 text-xs font-bold text-primary hover:underline underline-offset-2"
                       >
-                        View Case Study
+                        Visit Website
                         <ExternalLink className="w-3 h-3" />
                       </motion.button>
                     )}
