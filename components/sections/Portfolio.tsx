@@ -50,7 +50,7 @@ const PROJECTS: Project[] = [
   {
     id: 3,
     title: 'Bloom Spa & Wellness',
-    category: 'Beauty & Wellness',
+    category: 'Beauty & Artistry',
     client: 'Bloom Spa Co.',
     growth: '+78% Online Appointments',
     description:
@@ -105,7 +105,7 @@ const CATEGORIES = [
   'All',
   'Gym & Fitness',
   'Cafes & Restaurants',
-  'Beauty & Wellness',
+  'Beauty & Artistry',
   'Retail & E-commerce',
   'Healthcare',
   'Education',
@@ -138,7 +138,7 @@ const getCategoryStyles = (category: string) => {
     return { accent: '#2563EB', accentBg: 'rgba(37,99,235,0.1)' };
   } else if (cat.includes('cafe') || cat.includes('restaurant') || cat.includes('food')) {
     return { accent: '#8B5CF6', accentBg: 'rgba(139,92,246,0.1)' };
-  } else if (cat.includes('beauty') || cat.includes('wellness') || cat.includes('spa')) {
+  } else if (cat.includes('beauty') || cat.includes('wellness') || cat.includes('spa') || cat.includes('artistry')) {
     return { accent: '#06B6D4', accentBg: 'rgba(6,182,212,0.1)' };
   } else if (cat.includes('retail') || cat.includes('ecommerce') || cat.includes('shop')) {
     return { accent: '#2563EB', accentBg: 'rgba(37,99,235,0.1)' };

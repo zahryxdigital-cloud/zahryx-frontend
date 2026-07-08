@@ -614,7 +614,7 @@ export default function AdminDashboard() {
                       >
                         <option>Gym & Fitness</option>
                         <option>Cafes & Restaurants</option>
-                        <option>Beauty & Wellness</option>
+                        <option>Beauty & Artistry</option>
                         <option>Retail & E-commerce</option>
                         <option>Healthcare</option>
                         <option>Education</option>
