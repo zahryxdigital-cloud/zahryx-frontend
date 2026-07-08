@@ -62,12 +62,6 @@ export default function Navbar() {
           {/* Call to action button */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="/admin/login"
-              className="text-xs font-semibold text-neutral-dark/60 hover:text-neutral-dark transition-colors"
-            >
-              Admin Portal
-            </Link>
-            <Link
               href="#contact"
               className="px-5 py-2.5 rounded-full bg-primary hover:bg-primary-light text-white text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-1.5 group"
             >
@@ -108,13 +102,6 @@ export default function Navbar() {
             ))}
             <div className="h-px bg-neutral-border/80 my-2" />
             <div className="flex flex-col gap-3">
-              <Link
-                href="/admin/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-medium text-neutral-dark/70 hover:text-neutral-dark"
-              >
-                Admin Panel Login
-              </Link>
               <Link
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
